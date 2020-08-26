@@ -37,7 +37,7 @@
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/logo-header_2dee27e7-29e0-4b11-be6b-e5b8a383430e.png",
     "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
+    "checkout_logo_size": "small",
     "checkout_body_background_image": "",
     "checkout_body_background_color": "#fff",
     "checkout_input_background_color_mode": "white",

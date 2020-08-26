@@ -4801,10 +4801,6 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   position: relative;
   background-color: $color-body;
 
-  @include media-query($small) {
-    border-bottom: 1px solid $color-border;
-  }
-
   @include media-query($medium-up) {
     padding: 0 $gutter-site;
 
@@ -4818,7 +4814,6 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
 /// Logo
 
 .site-header__logo {
-  margin: 15px 0;
 
   .logo-align--center & {
     text-align: center;
@@ -4831,7 +4826,6 @@ $color-blankstate-background: rgba($color-body-text, 0.1);
   }
 
   @include media-query($small) {
-    padding-left: $gutter-site-mobile;
     text-align: left;
 
     img {
@@ -6262,7 +6256,6 @@ $nav-button-padding: 15px;
 .site-header__mobile-nav {
   z-index: $z-index-mobile-nav;
   position: relative;
-  background-color: $color-body;
 
   @include media-query($small) {
     @include display-flexbox();

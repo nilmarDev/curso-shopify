@@ -62,15 +62,15 @@
         {%- assign logo_classes = 'medium-up--one-quarter logo-align--left' -%}
       {% endif %}
 
-      <div class="grid__item {{ logo_classes }}">
+      <div class="grid__item {{ logo_classes }} site-header__logo-wrapper">
         {% comment %}
           Use the uploaded logo from theme settings if enabled.
           Site name gets precedence with H1 tag on homepage, div on other pages.
         {% endcomment %}
         {% if request.page_type == 'index' %}
-          <h1 class="h2 site-header__logo">
+          <h1 class="site-header__logo">
         {% else %}
-          <div class="h2 site-header__logo">
+          <div class="site-header__logo">
         {% endif %}
           {% if section.settings.logo %}
             {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}

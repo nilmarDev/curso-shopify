@@ -1,3 +1,21 @@
+// Variables
+// -----------------------------------------------------------
+
+// Colors
+$color-border: #CCCCCC;
+$color-black: #000;
+$color-black-focus: #444;
+$color-white: #FFF;
+$color-pink: #ED1E7A;
+$color-pink-focus: #C01561;
+
+// Backgrounds
+$color-body: {{ settings.color_body_bg }};
+
+// Header
+$header-mobile-height: 56px;
+    
+
 @font-face {
     font-family: 'DM Serif Display';
     src: url('{{ "DMSerifDisplay-Regular.eot" | assets_url}}');
@@ -9,4 +27,285 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+}
+
+body {
+    font-size: 16px;
+    line-height: 24px;
+    color: $color-black;
+    background: $color-white;
+}
+
+// Headings
+// -----------------------------------------------------------   
+    
+h1, h2, h3, h4, h5, h6 {
+    font-style: normal;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+    padding: 0;
+}
+
+  
+h1 {
+    font-size: 32px;
+    line-height: 40px;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+h4, h5, h6 {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.h1-seirf,
+.h2-seirf,
+.h3-seirf,
+.h4-seirf,
+.h5-seirf,
+.h6-seirf {
+    font-family: 'DM Serif Display';
+    font-weight: normal;
+}
+
+.heading-uppercase {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+h1.heading-uppercase  {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+h2.heading-uppercase {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.heading-uppercase-small {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+// Typograph
+// -----------------------------------------------------------   
+
+p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 16px;
+}
+
+.crossed-text {
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration-line: line-through;
+    color: $color-border;
+}
+
+.mini-text {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.mini-text-uppercase {
+    font-size: 12px;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+// Icons
+// -----------------------------------------------------------    
+
+.icon {
+    width: auto;
+    height: 24px;
+}
+
+// Buttons
+// -----------------------------------------------------------   
+
+button,
+.btn {
+    height: 48px;
+    color: $color-white;
+    background: $color-black;
+    padding: 12px 20px;
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    font-weight: normal;
+    border: 0;
+    border-radius: 0;
+
+    &:focus {
+        background: $color-black-focus;
+        border-radius: 0;
+    }
+}
+
+.btn-small {
+    height: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.btn-large {
+    height: 56px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.btn-pink:not([disabled]),
+.btn-pink {
+    background-color: $color-pink;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $color-pink-focus;
+    }
+}
+
+.btn-ghost:not([disabled]),
+.btn-ghost {
+    background-color: transparent;
+    outline: 1px solid $color-white;
+    outline-offset: -1px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $color-black-focus;
+        outline-offset: -4px;
+        outline-width: 4px;
+    }
+}
+
+.btn-ghost-black:not([disabled]),
+.btn-ghost-black {
+    color: $color-black;
+    outline-color: $color-black;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-black;
+        outline-color: $color-black;
+        background-color: transparent;
+    }
+}
+
+// Badge
+// -----------------------------------------------------------   
+
+.badge {
+    background: $color-pink;
+    border-radius: 5px;
+    color: $color-white;
+    padding: 4px 5px;
+    @extend .mini-text-uppercase;
+}
+
+// Forms
+// -----------------------------------------------------------
+
+label {
+    @extend .mini-text-uppercase;
+}
+
+select,
+input {
+    padding: 8px 10px;
+    height: 40px;
+    border: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: $color-black;
+    outline: 1px solid $color-border;
+
+    &:focus {
+        outline-color: $color-black;
+    }
+}
+
+select {
+    padding-right: 40px;
+}
+
+// Minicart
+// -----------------------------------------------------------
+
+.minicart-trigger {
+
+    .badge {
+        line-height: 16px;
+        padding: 4px 5px;
+        min-width: 25px;
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+// Page
+// -----------------------------------------------------------
+
+.page-container {
+    padding-top: $header-mobile-hight;
+}
+
+// Header
+// -----------------------------------------------------------
+
+.site-header {
+    height: $header-mobile-hight;
+    background: $color-body;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    padding: 8px 20px;
+}
+
+.site-header__logo-wrapper {
+    width: auto;
+}
+
+.site-header__logo {
+    margin: 0;
+}
+
+.site-header__logo-image {
+
+    img {
+        height: 40px;
+    }
+}
+
+.site-header__icon {
+    padding: 0;
+    height: 24px;
+    width: 24px;
+
+    
+    &.site-header__menu {
+        margin-left: 20px;
+    }
+
+    &.site-header__cart {
+        margin-left: 15px;
+    }
 }
