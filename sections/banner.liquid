@@ -1,0 +1,85 @@
+<div data-section-id="{{ section.id }}" data-section-type="banner-section">
+  <div class="banner--wrapper">
+    <img src="#" alt="">
+    <div class="banner--inner">
+      <div class="banner--title">
+        <h2>Title</h2>
+      </div>
+      <div class="banner--subTitle">
+        <p>Sub Title</p>
+      </div>
+      <div class="banner-button">
+        <a href="#" class="btn">
+          Shop now
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{ "name": {
+  "en": "Banner",
+  "pt-BR": "Banner"
+},
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": {
+        "en": "Image",
+        "pt-BR": "Imagem"
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "en": "Heading",
+        "pt-BR": "Título"
+      },
+      "default": {
+        "en": "Banner with text overlay",
+        "pt-BR": "Imagem com sobreposição de texto"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": {
+        "en": "Description",
+        "pt-BR": "Descrição"
+      }
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": {
+        "en": "Button label",
+        "pt-BR": "Título d botão"
+      }
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": {
+        "en": "Button link",
+        "pt-BR": "Link de botão"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en": "Banner",
+        "pt-BR": "Banner"
+      },
+      "category": {
+        "en": "Banner",
+        "pt-BR": "Banner"
+
+      }
+    }
+  ]
+}
+{% endschema %}
