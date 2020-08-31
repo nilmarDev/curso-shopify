@@ -8,16 +8,14 @@
       <img src="{{ section.settings.image | img_url: '300x300' }}" alt="">
     {%- endif -%}
     <div class="page-width banner--inner {{ section.settings.align_inner_banner }}">
-      <div class="banner--title">
         {%- if section.settings.title != blank -%}
-          <h2 style="color:{{ section.settings.color_title }}">{{ section.settings.title | escape }}</h2>
+          <div class="banner--title">
+              <h2 style="color:{{ section.settings.color_title }}">{{ section.settings.title | escape }}</h2>
+          </div>
         {% endif %}
-      </div>
-      <div class="banner--subTitle">
         {%- if section.settings.text != blank -%}
-          <p style="color:{{ section.settings.color_description }}">{{ section.settings.text }}</p>
+          <div class="banner--subTitle">{{ section.settings.text }}</div>
         {% endif %}
-      </div>
       {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
         {%- capture ariaLabel -%}
           {{- section.settings.button_label -}}
@@ -116,15 +114,6 @@
         "en": "Description",
         "pt-BR": "Descrição"
       }
-    },
-    {
-      "type": "color",
-      "id": "color_description",
-      "label": {
-        "en": "Description Color",
-        "pt-BR": "Cor da Descrição"
-      },
-      "default": "#ffffff"
     },
     {
       "type": "text",
