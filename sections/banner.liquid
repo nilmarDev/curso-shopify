@@ -1,18 +1,43 @@
 <div data-section-id="{{ section.id }}" data-section-type="banner-section">
-  <div class="banner--wrapper">
-    <img src="#" alt="">
-    <div class="banner--inner">
+  <div class="banner--wrapper banner--{{ section.settings.banner_size }} ">
+    {%- if section.settings.image == blank -%}
+      <div class="placeholder-background banner-placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+      {%- else -%}
+      <img src="{{ section.settings.image | img_url: '300x300' }}" alt="">
+    {%- endif -%}
+    <div class="page-width banner--inner {{ section.settings.align_inner_banner }}">
       <div class="banner--title">
-        <h2>Title</h2>
+        {%- if section.settings.title != blank -%}
+          <h2 style="color:{{ section.settings.color_title }}">{{ section.settings.title | escape }}</h2>
+        {% endif %}
       </div>
       <div class="banner--subTitle">
-        <p>Sub Title</p>
+        {%- if section.settings.text != blank -%}
+          <p style="color:{{ section.settings.color_description }}">{{ section.settings.text }}</p>
+        {% endif %}
       </div>
-      <div class="banner-button">
-        <a href="#" class="btn">
-          Shop now
-        </a>
-      </div>
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        {%- capture ariaLabel -%}
+          {{- section.settings.button_label -}}
+          {%- if section.settings.button_link.type == 'frontpage_link' -%}
+            : {{ 'homepage.general.title' | t -}}
+            {%- elsif section.settings.button_link.type == 'catalog_link' -%}
+            : {{ 'collections.catalog.title' | t -}}
+            {%- elsif section.settings.button_link.object.title -%}
+            : {{ section.settings.button_link.object.title -}}
+          {%- endif -%}
+        {%- endcapture -%}
+
+        <div class="banner--button">
+          <a href="{{ section.settings.button_link }}"
+             class="btn {{ section.settings.banner_type }}"
+             aria-label="{{ ariaLabel }}">
+            {{- section.settings.button_label | escape -}}
+          </a>
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -32,6 +57,38 @@
       }
     },
     {
+      "type": "select",
+      "id": "banner_size",
+      "label": {
+        "en": "Section height",
+        "pt-BR": "Altura da seção"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "label": {
+            "en": "Small",
+            "pt-BR": "Pequeno"
+          },
+          "value": "small"
+        },
+        {
+          "label": {
+            "en": "Medium",
+            "pt-BR": "Médio"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "en": "Large",
+            "pt-BR": "grande"
+          },
+          "value": "large"
+        }
+      ]
+    },
+    {
       "type": "text",
       "id": "title",
       "label": {
@@ -44,6 +101,15 @@
       }
     },
     {
+      "type": "color",
+      "id": "color_title",
+      "label": {
+        "en": "Title Color",
+        "pt-BR": "Cor do Título"
+      },
+      "default": "#ffffff"
+    },
+    {
       "type": "richtext",
       "id": "text",
       "label": {
@@ -52,11 +118,20 @@
       }
     },
     {
+      "type": "color",
+      "id": "color_description",
+      "label": {
+        "en": "Description Color",
+        "pt-BR": "Cor da Descrição"
+      },
+      "default": "#ffffff"
+    },
+    {
       "type": "text",
       "id": "button_label",
       "label": {
         "en": "Button label",
-        "pt-BR": "Título d botão"
+        "pt-BR": "Título do botão"
       }
     },
     {
@@ -66,6 +141,105 @@
         "en": "Button link",
         "pt-BR": "Link de botão"
       }
+    },
+    {
+      "type": "select",
+      "id": "banner_type",
+      "label": {
+        "en": "Button type",
+        "pt-BR": "Tipo de botão"
+      },
+      "default": "btn",
+      "options": [
+        {
+          "label": {
+            "en": "Default",
+            "pt-BR": "Padrão"
+          },
+          "value": "btn"
+        },
+        {
+          "label": {
+            "en": "Ghost button",
+            "pt-BR": "Ghost button"
+          },
+          "value": "btn-ghost"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align_inner_banner",
+      "label": {
+        "en": "Internal alignment",
+        "pt-BR": "Alinhamento interno"
+      },
+      "default": "banner--center",
+      "options": [
+        {
+          "label": {
+            "en": "Center",
+            "pt-BR": "Centro"
+          },
+          "value": "banner--center"
+        },
+        {
+          "label": {
+            "en": "Center-Top",
+            "pt-BR": "Topo-Centro"
+          },
+          "value": "banner-center-top"
+        },
+        {
+          "label": {
+            "en": "Center-Bottom",
+            "pt-BR": "Inferior-Centro"
+          },
+          "value": "banner-center-bottom"
+        },
+        {
+          "label": {
+            "en": "Center-Left",
+            "pt-BR": "Esquerda-Centro"
+          },
+          "value": "banner-left-center"
+        },
+        {
+          "label": {
+            "en": "Top-Left",
+            "pt-BR": "Esquerda-Topo"
+          },
+          "value": "banner-left-top"
+        },
+        {
+          "label": {
+            "en": "Bottom-Left",
+            "pt-BR": "Esquerda-Inferior"
+          },
+          "value": "banner-left-bottom"
+        },
+        {
+          "label": {
+            "en": "Center-Right",
+            "pt-BR": "Direita-Centro"
+          },
+          "value": "banner-right-center"
+        },
+        {
+          "label": {
+            "en": "Top-Right",
+            "pt-BR": "Direita-Topo"
+          },
+          "value": "banner-right-top"
+        },
+        {
+          "label": {
+            "en": "Bottom-Right",
+            "pt-BR": "Direita-Inferior"
+          },
+          "value": "banner-right-bottom"
+        }
+      ]
     }
   ],
   "presets": [
