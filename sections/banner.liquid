@@ -7,35 +7,37 @@
       {%- else -%}
       <img src="{{ section.settings.image | img_url: '300x300' }}" alt="">
     {%- endif -%}
-    <div class="page-width banner--inner {{ section.settings.align_inner_banner }}">
-        {%- if section.settings.title != blank -%}
-          <div class="banner--title">
+    <div class="banner--inner {{ section.settings.align_inner_banner }}">
+        <div class="page-width">
+          {%- if section.settings.title != blank -%}
+            <div class="banner--title">
               <h2 style="color:{{ section.settings.color_title }}">{{ section.settings.title | escape }}</h2>
-          </div>
-        {% endif %}
-        {%- if section.settings.text != blank -%}
-          <div class="banner--subTitle">{{ section.settings.text }}</div>
-        {% endif %}
-      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
-        {%- capture ariaLabel -%}
-          {{- section.settings.button_label -}}
-          {%- if section.settings.button_link.type == 'frontpage_link' -%}
-            : {{ 'homepage.general.title' | t -}}
-            {%- elsif section.settings.button_link.type == 'catalog_link' -%}
-            : {{ 'collections.catalog.title' | t -}}
-            {%- elsif section.settings.button_link.object.title -%}
-            : {{ section.settings.button_link.object.title -}}
-          {%- endif -%}
-        {%- endcapture -%}
+            </div>
+          {% endif %}
+          {%- if section.settings.text != blank -%}
+            <div class="banner--subTitle">{{ section.settings.text }}</div>
+          {% endif %}
+          {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+            {%- capture ariaLabel -%}
+              {{- section.settings.button_label -}}
+              {%- if section.settings.button_link.type == 'frontpage_link' -%}
+                : {{ 'homepage.general.title' | t -}}
+                {%- elsif section.settings.button_link.type == 'catalog_link' -%}
+                : {{ 'collections.catalog.title' | t -}}
+                {%- elsif section.settings.button_link.object.title -%}
+                : {{ section.settings.button_link.object.title -}}
+              {%- endif -%}
+            {%- endcapture -%}
 
-        <div class="banner--button">
-          <a href="{{ section.settings.button_link }}"
-             class="btn {{ section.settings.banner_type }}"
-             aria-label="{{ ariaLabel }}">
-            {{- section.settings.button_label | escape -}}
-          </a>
+            <div class="banner--button">
+              <a href="{{ section.settings.button_link }}"
+                 class="btn {{ section.settings.banner_type }}"
+                 aria-label="{{ ariaLabel }}">
+                {{- section.settings.button_label | escape -}}
+              </a>
+            </div>
+          {%- endif -%}
         </div>
-      {%- endif -%}
     </div>
   </div>
 </div>
