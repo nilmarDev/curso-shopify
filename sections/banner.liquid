@@ -1,52 +1,51 @@
 <div data-section-id="{{ section.id }}" data-section-type="banner-section">
-  <div class="banner--wrapper banner--{{ section.settings.banner_size }} ">
+  <div class="banner--wrapper {{ section.settings.align_inner_banner }}">
     {%- if section.settings.image == blank -%}
       <div class="placeholder-background banner-placeholder">
         {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
       </div>
-      {%- else -%}
+    {%- else -%}
       <img src="{{ section.settings.image | img_url: '300x300' }}" alt="">
     {%- endif -%}
-    <div class="banner--inner {{ section.settings.align_inner_banner }}">
-        <div class="page-width">
-          {%- if section.settings.title != blank -%}
-            <div class="banner--title">
-              <h2 style="color:{{ section.settings.color_title }}">{{ section.settings.title | escape }}</h2>
-            </div>
-          {% endif %}
-          {%- if section.settings.text != blank -%}
-            <div class="banner--subTitle">{{ section.settings.text }}</div>
-          {% endif %}
-          {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
-            {%- capture ariaLabel -%}
-              {{- section.settings.button_label -}}
-              {%- if section.settings.button_link.type == 'frontpage_link' -%}
-                : {{ 'homepage.general.title' | t -}}
-                {%- elsif section.settings.button_link.type == 'catalog_link' -%}
-                : {{ 'collections.catalog.title' | t -}}
-                {%- elsif section.settings.button_link.object.title -%}
-                : {{ section.settings.button_link.object.title -}}
-              {%- endif -%}
-            {%- endcapture -%}
-
-            <div class="banner--button">
-              <a href="{{ section.settings.button_link }}"
-                 class="btn {{ section.settings.banner_type }}"
-                 aria-label="{{ ariaLabel }}">
-                {{- section.settings.button_label | escape -}}
-              </a>
-            </div>
-          {%- endif -%}
+    <div class="banner--inner">
+      {%- if section.settings.title != blank -%}
+        <div class="banner--title">
+          <h2 style="color:{{ section.settings.color_title }}">{{ section.settings.title | escape }}</h2>
         </div>
+      {% endif %}
+      {%- if section.settings.text != blank -%}
+        <div class="banner--subTitle">{{ section.settings.text }}</div>
+      {% endif %}
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        {%- capture ariaLabel -%}
+          {{- section.settings.button_label -}}
+          {%- if section.settings.button_link.type == 'frontpage_link' -%}
+            : {{ 'homepage.general.title' | t -}}
+            {%- elsif section.settings.button_link.type == 'catalog_link' -%}
+            : {{ 'collections.catalog.title' | t -}}
+            {%- elsif section.settings.button_link.object.title -%}
+            : {{ section.settings.button_link.object.title -}}
+          {%- endif -%}
+        {%- endcapture -%}
+
+        <div class="banner--button">
+          <a href="{{ section.settings.button_link }}"
+             class="btn {{ section.settings.banner_type }}"
+             aria-label="{{ ariaLabel }}">
+            {{- section.settings.button_label | escape -}}
+          </a>
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
 
 {% schema %}
-{ "name": {
-  "en": "Banner",
-  "pt-BR": "Banner"
-},
+{
+  "name": {
+    "en": "Banner",
+    "pt-BR": "Banner"
+  },
   "settings": [
     {
       "type": "image_picker",
@@ -56,38 +55,38 @@
         "pt-BR": "Imagem"
       }
     },
-    {
-      "type": "select",
-      "id": "banner_size",
-      "label": {
-        "en": "Section height",
-        "pt-BR": "Altura da seção"
-      },
-      "default": "medium",
-      "options": [
-        {
-          "label": {
-            "en": "Small",
-            "pt-BR": "Pequeno"
-          },
-          "value": "small"
-        },
-        {
-          "label": {
-            "en": "Medium",
-            "pt-BR": "Médio"
-          },
-          "value": "medium"
-        },
-        {
-          "label": {
-            "en": "Large",
-            "pt-BR": "grande"
-          },
-          "value": "large"
-        }
-      ]
-    },
+//    {
+//      "type": "select",
+//      "id": "banner_size",
+//      "label": {
+//        "en": "Section height",
+//        "pt-BR": "Altura da seção"
+//      },
+//      "default": "medium",
+//      "options": [
+//        {
+//          "label": {
+//            "en": "Small",
+//            "pt-BR": "Pequeno"
+//          },
+//          "value": "small"
+//        },
+//        {
+//          "label": {
+//            "en": "Medium",
+//            "pt-BR": "Médio"
+//          },
+//          "value": "medium"
+//        },
+//        {
+//          "label": {
+//            "en": "Large",
+//            "pt-BR": "grande"
+//          },
+//          "value": "large"
+//        }
+//      ]
+//    },
     {
       "type": "text",
       "id": "title",
@@ -242,7 +241,6 @@
       "category": {
         "en": "Banner",
         "pt-BR": "Banner"
-
       }
     }
   ]
